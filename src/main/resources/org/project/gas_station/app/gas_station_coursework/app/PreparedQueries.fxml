@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.project.gas_station.app.gas_station_coursework.controller.PreparedQueriesController"
+            prefWidth="800" prefHeight="600">
+  <top>
+    <HBox alignment="CENTER_LEFT" styleClass="header-toolbar">
+      <Label text="Готовые SQL‑запросы" styleClass="header-title"/>
+      <Region HBox.hgrow="ALWAYS"/>
+      <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
+    </HBox>
+  </top>
+
+  <center>
+    <VBox spacing="10" styleClass="content-pane" alignment="CENTER">
+      <Button text="Продажи топлива" onAction="#onQuery1" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Выручка АЗС за период" onAction="#onQuery2" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Список поставщиков топлива" onAction="#onQuery3" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Повысить цены топлива фирмы" onAction="#onQuery4" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Добавить АЗС" onAction="#onQuery5" styleClass="nav-button" maxWidth="300"/>
+      <Button text="АЗС без определенного топлива" onAction="#onQuery6" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Объём продаж по видам топлива" onAction="#onQuery7" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Кол‑во АЗС у каждой фирмы" onAction="#onQuery8" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Актуальные цены" onAction="#onQuery9" styleClass="nav-button" maxWidth="300"/>
+      <Button text="Анонимизация клиента" onAction="#onQuery10" styleClass="nav-button" maxWidth="300"/>
+    </VBox>
+  </center>
+
+  <bottom>
+    <Label fx:id="statusLabel" text="Статус: Готов" styleClass="status-label"/>
+  </bottom>
+</BorderPane>

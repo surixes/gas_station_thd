@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.project.gas_station.app.gas_station_coursework.controller.CustomQueryController"
+      spacing="10" styleClass="content-pane">
+
+    <!-- Верхняя панель с кнопкой "Назад" -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
+    </HBox>
+
+    <!-- Поле для ввода запроса -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Ваш запрос:"/>
+        <TextField fx:id="queryField" promptText="Например: Список клиентов" prefWidth="400"/>
+        <Button fx:id="executeButton" text="Выполнить" onAction="#handleExecute"/>
+    </HBox>
+
+    <!-- Таблица для вывода результатов -->
+    <TableView fx:id="resultTable" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label text="Нет данных для отображения."/>
+        </placeholder>
+    </TableView>
+
+    <!-- Сообщение об ошибке или статусе -->
+    <Label fx:id="statusLabel" text="" styleClass="status-label"/>
+</VBox>

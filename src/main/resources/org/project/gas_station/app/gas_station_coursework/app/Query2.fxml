@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="contentPane"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.project.gas_station.app.gas_station_coursework.controller.RevenueByStationController"
+      styleClass="content-pane"
+      spacing="10">
+
+    <!-- Верхняя панель с кнопкой "Назад" -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
+    </HBox>
+
+    <!-- Поле выбора периода и кнопка показа результатов -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="С:"/>
+        <DatePicker fx:id="startDatePicker"/>
+        <Label text="по"/>
+        <DatePicker fx:id="endDatePicker"/>
+        <Button fx:id="showRevenueButton" text="Показать выручку" onAction="#handleShowRevenue"/>
+    </HBox>
+
+    <!-- Таблица результатов запроса -->
+    <TableView fx:id="revenueTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="stationColumn" text="АЗС" prefWidth="200.0"/>
+            <TableColumn fx:id="addressColumn" text="Адрес" prefWidth="300.0"/>
+            <TableColumn fx:id="revenueColumn" text="Выручка (RUB)" prefWidth="150.0"/>
+        </columns>
+        <placeholder>
+            <Label text="Нет данных для отображения." />
+        </placeholder>
+    </TableView>
+</VBox>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Priority?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.project.gas_station.app.gas_station_coursework.controller.CurrentFuelPricesController"
+      prefWidth="800" prefHeight="600" spacing="10" style="-fx-padding: 10;"
+      fx:id="rootContainer"> <!-- Добавлен fx:id для корневого элемента -->
+
+    <!-- Верхняя панель с кнопкой назад -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
+    </HBox>
+
+    <!-- Основной контент -->
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <!-- Фильтрация по фирмам -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Фирма:"/>
+            <ComboBox fx:id="firmComboBox" promptText="Выберите фирму" prefWidth="200"/>
+        </HBox>
+
+        <!-- Фильтрация по типу топлива -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Тип топлива:"/>
+            <ComboBox fx:id="fuelTypeCombo" promptText="Выберите тип топлива" prefWidth="200"/>
+        </HBox>
+
+        <!-- Кнопка обновления -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Button fx:id="refreshButton" text="Обновить данные" onAction="#handleRefresh" styleClass="nav-button"/>
+        </HBox>
+
+        <!-- Таблица с актуальными ценами -->
+        <TableView fx:id="pricesTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="firmColumn" text="Фирма" prefWidth="150"/>
+                <TableColumn fx:id="fuelTypeColumn" text="Вид топлива" prefWidth="120"/>
+                <TableColumn fx:id="priceColumn" text="Цена" prefWidth="120"/>
+                <TableColumn fx:id="startDateColumn" text="Начало действия" prefWidth="120"/>
+                <TableColumn fx:id="endDateColumn" text="Окончание действия" prefWidth="120"/>
+            </columns>
+            <placeholder>
+                <Label text="Нет данных для отображения." />
+            </placeholder>
+        </TableView>
+    </VBox>
+
+    <!-- Статусная строка -->
+    <Label fx:id="statusLabel" text="Статус: Готов" styleClass="status-label"/>
+</VBox>

@@ -1,0 +1,53 @@
+.root {
+    -fx-background-color: #F5F5F5;
+}
+
+.center {
+    -fx-alignment: center;
+}
+
+.header-toolbar {
+    -fx-background-color: #4285F4;
+    -fx-padding: 10;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.exit-button {
+    -fx-background-color: #FF5252;
+    -fx-text-fill: white;
+}
+
+.nav-button {
+    -fx-background-color: #4285F4;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+}
+
+.content-pane .welcome-text {
+    -fx-font-size: 24px;
+    -fx-text-fill: #333;
+}
+
+.content-pane .subtitle-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666;
+}
+
+.status-label {
+    -fx-padding: 5;
+    -fx-background-color: #EEE;
+}
+
+.hbox-center {
+    -fx-alignment: CENTER;
+}
+
+.nav-button:hover {
+    -fx-background-color: #3367d6;  
+}
