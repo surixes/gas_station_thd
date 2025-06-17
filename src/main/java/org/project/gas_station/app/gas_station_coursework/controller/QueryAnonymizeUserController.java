@@ -48,7 +48,7 @@ public class QueryAnonymizeUserController {
                 tableData.add(new ClientRow(
                         String.valueOf(c.getId()),
                         c.getName(),
-                        c.getPhone() // Используем phone как email для примера
+                        c.getPhone() 
                 ));
             }
             usersTable.setItems(tableData);
@@ -101,7 +101,6 @@ public class QueryAnonymizeUserController {
         alert.showAndWait();
     }
 
-    // Вспомогательный класс для строк таблицы
     public static class ClientRow {
         private final String id;
         private final String name;

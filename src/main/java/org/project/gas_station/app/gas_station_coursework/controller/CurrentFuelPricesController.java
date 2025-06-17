@@ -83,7 +83,6 @@ public class CurrentFuelPricesController {
         }
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // Исправленный запрос: ищем цену, которая действует на текущую дату
             String hql = "FROM PriceDynamics pd " +
                     "WHERE pd.firm.id = :firmId " +
                     "AND pd.fuel.id = :fuelId " +
@@ -94,7 +93,7 @@ public class CurrentFuelPricesController {
             List<PriceDynamics> prices = session.createQuery(hql, PriceDynamics.class)
                     .setParameter("firmId", selectedFirm.getId())
                     .setParameter("fuelId", selectedFuel.getId())
-                    .setMaxResults(1) // Берем только самую последнюю актуальную цену
+                    .setMaxResults(1)
                     .getResultList();
 
             ObservableList<PriceRow> tableData = FXCollections.observableArrayList();

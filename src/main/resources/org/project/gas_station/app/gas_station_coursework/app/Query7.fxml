@@ -11,19 +11,16 @@
       xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.project.gas_station.app.gas_station_coursework.controller.SalesVolumeByFuelType"
       styleClass="content-pane" spacing="10">
-    <!-- Верхняя панель с кнопкой "Назад" -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
 
-    <!-- Поле выбора типа топлива и кнопка показа результатов -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label text="Тип топлива:"/>
         <ComboBox fx:id="fuelTypeCombo" promptText="Выберите тип топлива" prefWidth="150.0"/>
         <Button fx:id="showSalesButton" text="Показать продажи" onAction="#handleShowSales"/>
     </HBox>
 
-    <!-- Таблица результатов запроса -->
     <TableView fx:id="salesTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="dateColumn" text="Дата продажи" prefWidth="150.0"/>

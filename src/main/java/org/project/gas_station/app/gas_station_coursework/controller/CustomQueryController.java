@@ -39,7 +39,6 @@ public class CustomQueryController {
                 "/org/project/gas_station/app/gas_station_coursework/app/StartScreen.fxml"));
         Scene scene = backButton.getScene();
         scene.setRoot(prevView);
-        // Повторно добавьте CSS, если нужно
         if (!scene.getStylesheets().contains("/styles/main.css")) {
             scene.getStylesheets().add("/styles/main.css");
         }
@@ -52,7 +51,6 @@ public class CustomQueryController {
             statusLabel.setText("Введите запрос!");
             return;
         }
-        // Примеры преобразования пользовательских запросов в SQL
         String sql = mapUserQueryToSql(userQuery.trim());
         if (sql == null) {
             statusLabel.setText("Не удалось распознать запрос. Попробуйте иначе.");
@@ -71,7 +69,6 @@ public class CustomQueryController {
                 } else {
                     columnCount = 1;
                 }
-                // Создаём колонки
                 for (int i = 0; i < columnCount; i++) {
                     final int colIndex = i;
                     TableColumn<ObservableList<String>, String> col = new TableColumn<>("Колонка " + (i + 1));
@@ -79,7 +76,7 @@ public class CustomQueryController {
                             param -> new javafx.beans.property.SimpleStringProperty(param.getValue().get(colIndex)));
                     resultTable.getColumns().add(col);
                 }
-                // Заполняем строки
+
                 for (Object rowObj : resultList) {
                     ObservableList<String> row = FXCollections.observableArrayList();
                     if (rowObj instanceof Object[]) {
@@ -100,10 +97,10 @@ public class CustomQueryController {
         }
     }
 
-    // Примитивный маппер пользовательских запросов на SQL
+
     private String mapUserQueryToSql(String userQuery) {
         String q = userQuery.toLowerCase();
-        // Если пользователь ввёл обычный SQL-запрос
+
         if (q.startsWith("select") || q.startsWith("show") || q.startsWith("with")) {
             return userQuery;
         }
@@ -125,7 +122,6 @@ public class CustomQueryController {
         if (q.contains("цен")) {
             return "SELECT id, price, start_date, end_date, fuel_id, firm_id FROM price_dynamics";
         }
-        // Можно добавить больше шаблонов
         return null;
     }
 }

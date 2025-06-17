@@ -12,33 +12,27 @@
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.project.gas_station.app.gas_station_coursework.controller.CurrentFuelPricesController"
       prefWidth="800" prefHeight="600" spacing="10" style="-fx-padding: 10;"
-      fx:id="rootContainer"> <!-- Добавлен fx:id для корневого элемента -->
+      fx:id="rootContainer"> 
 
-    <!-- Верхняя панель с кнопкой назад -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
 
-    <!-- Основной контент -->
     <VBox spacing="10" VBox.vgrow="ALWAYS">
-        <!-- Фильтрация по фирмам -->
         <HBox alignment="CENTER_LEFT" spacing="10">
             <Label text="Фирма:"/>
             <ComboBox fx:id="firmComboBox" promptText="Выберите фирму" prefWidth="200"/>
         </HBox>
 
-        <!-- Фильтрация по типу топлива -->
         <HBox alignment="CENTER_LEFT" spacing="10">
             <Label text="Тип топлива:"/>
             <ComboBox fx:id="fuelTypeCombo" promptText="Выберите тип топлива" prefWidth="200"/>
         </HBox>
 
-        <!-- Кнопка обновления -->
         <HBox alignment="CENTER_LEFT" spacing="10">
             <Button fx:id="refreshButton" text="Обновить данные" onAction="#handleRefresh" styleClass="nav-button"/>
         </HBox>
 
-        <!-- Таблица с актуальными ценами -->
         <TableView fx:id="pricesTable" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="firmColumn" text="Фирма" prefWidth="150"/>
@@ -53,6 +47,5 @@
         </TableView>
     </VBox>
 
-    <!-- Статусная строка -->
     <Label fx:id="statusLabel" text="Статус: Готов" styleClass="status-label"/>
 </VBox>

@@ -31,7 +31,6 @@ public class Query8Controller {
 
     @FXML
     public void initialize() {
-        // Заполнение ComboBox фирмами
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             List<String> firmNames = session.createQuery("SELECT f.name FROM Firm f ORDER BY f.name", String.class)
                     .getResultList();
@@ -41,7 +40,6 @@ public class Query8Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Настройка колонок таблицы
         firmNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirmName()));
         stationCountColumn
                 .setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStationCount()));
@@ -90,7 +88,6 @@ public class Query8Controller {
         alert.showAndWait();
     }
 
-    // Вспомогательный класс для строк таблицы
     public static class FirmRow {
         private final String firmName;
         private final String stationCount;

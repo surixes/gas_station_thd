@@ -193,12 +193,11 @@ public class PreparedQueriesController {
         }
     }
 
-    // Реализация запуска запросов
+    
     private void executeReportQuery(String title, String sql) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             var list = session.createNativeQuery(sql).list();
-            // TODO: Преобразовать результат в ObservableList и показать через
-            // ResultViewController
+
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Ошибка:\n" + e.getMessage()).showAndWait();
         }

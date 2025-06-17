@@ -9,12 +9,10 @@
       styleClass="content-pane"
       spacing="10">
 
-    <!-- Верхняя панель с кнопкой "Назад" -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
 
-    <!-- Поле выбора периода и кнопка показа результатов -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label text="С:"/>
         <DatePicker fx:id="startDatePicker"/>
@@ -23,7 +21,6 @@
         <Button fx:id="showRevenueButton" text="Показать выручку" onAction="#handleShowRevenue"/>
     </HBox>
 
-    <!-- Таблица результатов запроса -->
     <TableView fx:id="revenueTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="stationColumn" text="АЗС" prefWidth="200.0"/>

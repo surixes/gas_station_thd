@@ -11,19 +11,16 @@
       xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.project.gas_station.app.gas_station_coursework.controller.QueryAnonymizeUserController"
       styleClass="content-pane" spacing="10">
-    <!-- Верхняя панель с кнопкой "Назад" -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
 
-    <!-- Список пользователей и кнопка анонимизации -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label text="Пользователь:"/>
         <ComboBox fx:id="userCombo" promptText="Выберите пользователя" prefWidth="250.0"/>
         <Button fx:id="anonymizeButton" text="Анонимизировать" onAction="#handleAnonymize"/>
     </HBox>
 
-    <!-- Таблица пользователей -->
     <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="userIdColumn" text="ID" prefWidth="80.0"/>

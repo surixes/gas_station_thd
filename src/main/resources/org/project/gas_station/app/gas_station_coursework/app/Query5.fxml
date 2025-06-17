@@ -12,29 +12,24 @@
       fx:controller="org.project.gas_station.app.gas_station_coursework.controller.AddGasStationController"
       styleClass="content-pane" spacing="10">
     
-    <!-- Верхняя панель с кнопкой "Назад" -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
-    
-    <!-- Поле для ввода адреса новой АЗС -->
+
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label text="Адрес новой АЗС:"/>
         <TextField fx:id="addressField" promptText="Введите адрес АЗС" prefWidth="300.0"/>
     </HBox>
 
-    <!-- Поле выбора фирмы-владельца -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label text="Выберите фирму-владельца:"/>
         <ComboBox fx:id="firmComboBox" promptText="Выберите фирму" prefWidth="300.0"/>
     </HBox>
 
-    <!-- Кнопка для добавления новой АЗС -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Button fx:id="addGasStationButton" text="Добавить АЗС" onAction="#handleAddGasStation"/>
     </HBox>
     
-    <!-- Место для вывода сообщения о созданной АЗС -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label fx:id="confirmationMessage" text="" style="-fx-text-fill: green;" />
     </HBox>

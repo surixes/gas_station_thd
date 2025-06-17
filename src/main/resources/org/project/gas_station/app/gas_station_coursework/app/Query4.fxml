@@ -12,12 +12,11 @@
       xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.project.gas_station.app.gas_station_coursework.controller.FuelPriceIncreaseController"
       styleClass="content-pane" spacing="10">
-    <!-- Верхняя панель с кнопкой "Назад" -->
+
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
 
-    <!-- Поле выбора фирмы и текстовое поле для ввода повышения цены -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label text="Фирма:"/>
         <ComboBox fx:id="firmComboBox" promptText="Выберите фирму" prefWidth="200.0"/>
@@ -26,7 +25,6 @@
         <Button fx:id="applyIncreaseButton" text="Применить повышение" onAction="#handleApplyPriceIncrease"/>
     </HBox>
 
-    <!-- Таблица с ценами до повышения -->
     <Label text="Цены до повышения:"/>
     <TableView fx:id="beforePriceTable" VBox.vgrow="ALWAYS">
         <columns>
@@ -38,7 +36,6 @@
         </placeholder>
     </TableView>
 
-    <!-- Таблица с ценами после повышения -->
     <Label text="Цены после повышения:"/>
     <TableView fx:id="afterPriceTable" VBox.vgrow="ALWAYS">
         <columns>

@@ -37,13 +37,10 @@ public class Query1FuelSalesController {
     @FXML
     private Button backButton;
 
-    /**
-     * Метод инициализации контроллера.
-     * Вызывается автоматически после загрузки FXML.
-     */
+
     @FXML
     public void initialize() {
-        // Заполнение списка типов топлива (получаем из БД через Hibernate)
+        
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             List<String> fuelTypes = session
                     .createQuery("SELECT f.type FROM Fuel f", String.class)
@@ -51,13 +48,10 @@ public class Query1FuelSalesController {
             fuelTypeCombo.setItems(FXCollections.observableArrayList(fuelTypes));
         } catch (Exception e) {
             e.printStackTrace();
-            // В реальном приложении здесь можно добавить обработку ошибки загрузки данных
         }
 
-        // Настройка отображения колонок таблицы
         dateColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("saleDate"));
         quantityColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
-        // Для адреса используем свойство связанной станции
         addressColumn.setCellValueFactory(
                 cellData -> new SimpleStringProperty(cellData.getValue().getStation().getAddress()));
     }
@@ -87,7 +81,6 @@ public class Query1FuelSalesController {
     private void handleBack() throws IOException {
         Parent prevView = FXMLLoader.load(getClass().getResource(
                 "/org/project/gas_station/app/gas_station_coursework/app/PreparedQueries.fxml"));
-        // Получаем главный контейнер контента и заменяем текущий вид на предыдущий
         VBox contentPane = (VBox) backButton.getScene().lookup("#contentPane");
         if (contentPane != null) {
             contentPane.getChildren().setAll(prevView);

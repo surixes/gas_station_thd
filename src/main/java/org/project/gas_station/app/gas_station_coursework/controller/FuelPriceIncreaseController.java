@@ -46,7 +46,7 @@ public class FuelPriceIncreaseController {
 
     @FXML
     public void initialize() {
-        // Устанавливаем фабрики значений для таблиц
+
         fuelTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFuelType()));
         oldPriceColumn.setCellValueFactory(
                 cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getOldPrice())));
@@ -56,7 +56,7 @@ public class FuelPriceIncreaseController {
         newPriceColumn.setCellValueFactory(
                 cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getNewPrice())));
 
-        // Загружаем список фирм в ComboBox
+
         loadFirms();
     }
 
@@ -94,7 +94,7 @@ public class FuelPriceIncreaseController {
         }
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // 1. Получаем цены ДО изменения
+
             String hqlBefore = "FROM PriceDynamics pd WHERE pd.firm.id = :firmId AND pd.startDate = " +
                     "(SELECT MAX(pd2.startDate) FROM PriceDynamics pd2 WHERE pd2.fuel.id = pd.fuel.id AND pd2.firm.id = :firmId)";
             List<PriceDynamics> priceListBefore = session.createQuery(hqlBefore, PriceDynamics.class)
@@ -107,26 +107,24 @@ public class FuelPriceIncreaseController {
             }
             beforePriceTable.setItems(beforeData);
 
-            // 2. Обновляем цены с коммитом транзакции
             Transaction transaction = session.beginTransaction();
             String hqlUpdate = "UPDATE PriceDynamics pd SET pd.price = pd.price * (1 + :increasePercentage / 100.0) WHERE pd.firm.id = :firmId";
             int updatedCount = session.createQuery(hqlUpdate)
                     .setParameter("increasePercentage", priceIncreasePercentage)
                     .setParameter("firmId", selectedFirm.getId())
                     .executeUpdate();
-            transaction.commit(); // КОММИТ ИЗМЕНЕНИЙ!
+            transaction.commit(); 
 
-            // 3. Очищаем кэш Hibernate
-            session.clear(); // Важно: сбрасываем кэш сессии
+            
+            session.clear(); 
 
-            // 4. Получаем обновленные цены
+            
             List<PriceDynamics> priceListAfter = session.createQuery(hqlBefore, PriceDynamics.class)
                     .setParameter("firmId", selectedFirm.getId())
                     .getResultList();
 
             ObservableList<PriceRow> afterData = FXCollections.observableArrayList();
             for (PriceDynamics pd : priceListAfter) {
-                // Для таблицы "после" используем новый конструктор
                 afterData.add(new PriceRow(pd.getFuel().getType(), pd.getPrice().doubleValue()));
             }
             afterPriceTable.setItems(afterData);
@@ -164,7 +162,7 @@ public class FuelPriceIncreaseController {
         public PriceRow(String fuelType, double oldPrice) {
             this.fuelType = fuelType;
             this.oldPrice = oldPrice;
-            this.newPrice = oldPrice; // В таблице "до" и "после" могут быть одинаковые данные, пока не обновим.
+            this.newPrice = oldPrice; 
         }
 
         public String getFuelType() {

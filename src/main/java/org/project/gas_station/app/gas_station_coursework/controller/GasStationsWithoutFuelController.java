@@ -26,18 +26,18 @@ public class GasStationsWithoutFuelController {
     @FXML
     private Button showGasStationsButton;
     @FXML
-    private TableView<String> gasStationsTable; // Теперь просто строки с адресами
+    private TableView<String> gasStationsTable; 
     @FXML
-    private TableColumn<String, String> stationAddressColumn; // Упрощенная колонка
+    private TableColumn<String, String> stationAddressColumn;
     @FXML
     private Button backButton;
 
     @FXML
     public void initialize() {
-        // Загружаем доступные типы топлива в ComboBox
+        
         loadFuelTypes();
 
-        // Устанавливаем фабрику значений для таблицы
+        
         stationAddressColumn.setCellValueFactory(
                 cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue()));
     }
@@ -62,7 +62,7 @@ public class GasStationsWithoutFuelController {
         }
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // HQL запрос
+            
             String hql = "SELECT gs.address FROM GasStation gs " +
                     "WHERE gs.id NOT IN (" +
                     "   SELECT DISTINCT s.station.id FROM Sale s " +
@@ -74,7 +74,7 @@ public class GasStationsWithoutFuelController {
                     .setParameter("fuelId", selectedFuel.getId())
                     .getResultList();
 
-            // Обновляем таблицу
+            
             gasStationsTable.setItems(FXCollections.observableArrayList(addresses));
 
             if (addresses.isEmpty()) {

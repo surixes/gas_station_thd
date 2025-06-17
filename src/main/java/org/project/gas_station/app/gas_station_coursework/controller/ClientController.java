@@ -41,7 +41,6 @@ public class ClientController {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        // Скрываем кнопки редактирования/удаления до выбора клиента
         updateButton.setDisable(true);
         deleteButton.setDisable(true);
     }

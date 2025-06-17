@@ -30,7 +30,6 @@ public class AddGasStationController {
 
     @FXML
     public void initialize() {
-        // Загрузка списка фирм в ComboBox
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             firmComboBox.getItems()
                     .setAll(session.createQuery("FROM Firm WHERE isOwner = true", Firm.class).getResultList());
@@ -57,14 +56,12 @@ public class AddGasStationController {
             newGasStation.setAddress(address);
             newGasStation.setFirm(selectedFirm);
 
-            // Добавьте логирование перед сохранением
             System.out.println("Before persist: " + newGasStation);
             System.out.println("ID before persist: " + newGasStation.getId());
 
             session.persist(newGasStation);
             session.getTransaction().commit();
 
-            // Добавьте логирование после сохранения
             System.out.println("After persist: " + newGasStation);
             System.out.println("ID after persist: " + newGasStation.getId());
 
@@ -86,7 +83,6 @@ public class AddGasStationController {
     private void handleBack() throws IOException {
         Parent prevView = FXMLLoader.load(getClass().getResource(
                 "/org/project/gas_station/app/gas_station_coursework/app/PreparedQueries.fxml"));
-        // Получаем главный контейнер контента и заменяем текущий вид на предыдущий
         VBox contentPane = (VBox) backButton.getScene().lookup("#contentPane");
         if (contentPane != null) {
             contentPane.getChildren().setAll(prevView);

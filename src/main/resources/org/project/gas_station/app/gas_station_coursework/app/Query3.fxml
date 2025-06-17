@@ -12,19 +12,16 @@
       fx:controller="org.project.gas_station.app.gas_station_coursework.controller.FuelSuppliersController"
       styleClass="content-pane" spacing="10">
 
-    <!-- Верхняя панель с кнопкой "Назад" -->
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Button fx:id="backButton" text="← Назад" onAction="#handleBack" styleClass="nav-button"/>
     </HBox>
 
-    <!-- Поле выбора типа топлива и кнопка показа результатов -->
     <HBox alignment="CENTER_LEFT" spacing="5">
         <Label text="Тип топлива:"/>
         <ComboBox fx:id="fuelTypeCombo" promptText="Выберите топливо" prefWidth="200.0"/>
         <Button fx:id="showSuppliersButton" text="Показать поставщиков" onAction="#handleShowSuppliers"/>
     </HBox>
 
-    <!-- Таблица поставщиков топлива -->
     <TableView fx:id="suppliersTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="supplierNameColumn" text="Название поставщика" prefWidth="200.0"/>
